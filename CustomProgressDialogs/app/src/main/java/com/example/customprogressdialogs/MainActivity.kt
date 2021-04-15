@@ -10,8 +10,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var dialog = DialogUtil.builder(this@MainActivity)
-            .getDefaultDialog()
-            .setDefaultDialogText("Aditya")
+            .getLinearDialog()
+            .setLinearDialogTitle("Aditya Srivastava")
             .build()
 
     }

@@ -6,8 +6,8 @@ import android.content.Context
 class DialogUtil(val context: Context) {
 
 
-    var defaultDialog: DefaultDialog? = null
-
+    lateinit var defaultDialog: DefaultDialog
+    lateinit var linearDialog: LinearProgressDialog
 
     companion object {
 
@@ -31,8 +31,20 @@ class DialogUtil(val context: Context) {
     }
 
 
+    fun getLinearDialog(): DialogUtil{
+        linearDialog = LinearProgressDialog.create(context)
+        return INSTANCE
+    }
+
+
     fun setDefaultDialogText(text: String): DialogUtil{
-        defaultDialog?.setText(text)
+        defaultDialog.setText(text)
+        return INSTANCE
+    }
+
+
+    fun setLinearDialogTitle(text: String): DialogUtil{
+        linearDialog.setText(text)
         return INSTANCE
     }
 
@@ -42,7 +54,13 @@ class DialogUtil(val context: Context) {
      * method to show dialog
      */
     fun show() {
-        defaultDialog?.show()
+        if(this::defaultDialog.isInitialized){
+            defaultDialog.show()
+        }
+
+        if(this::linearDialog.isInitialized){
+            linearDialog.show()
+        }
     }
 
 
@@ -51,7 +69,8 @@ class DialogUtil(val context: Context) {
      * method to dismiss dialog
      */
     fun dismiss() {
-        defaultDialog?.dismiss()
+        defaultDialog.dismiss()
+        linearDialog.dismiss()
     }
 
 

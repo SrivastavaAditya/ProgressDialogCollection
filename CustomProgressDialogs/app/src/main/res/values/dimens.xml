@@ -4,4 +4,10 @@
     <dimen name="length5">5dp</dimen>
     <dimen name="length1">1dp</dimen>
     <dimen name="length10">10dp</dimen>
+    <dimen name="textsize20">20sp</dimen>
+    <dimen name="length200">200dp</dimen>
+    <dimen name="length20">20dp</dimen>
+    <dimen name="textsize15">15sp</dimen>
+    <dimen name="length300">300dp</dimen>
+    <dimen name="length30">30dp</dimen>
 </resources>
