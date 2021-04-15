@@ -1,0 +1,30 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/box_bg"
+        android:layout_centerInParent="true"
+        android:padding="@dimen/length10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginLeft="@dimen/length10"
+            android:id="@+id/tv_load_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_loading"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/textsize25"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/length10"/>
+    </LinearLayout>
+</RelativeLayout>
