@@ -39,8 +39,7 @@ class DefaultDialog(mContext: Context): BaseDialog(mContext) {
         lateinit var INSTANCE: DefaultDialog
 
         fun create(context: Context): DefaultDialog {
-            INSTANCE =
-                DefaultDialog(context)
+            INSTANCE = DefaultDialog(context)
             return INSTANCE
         }
     }

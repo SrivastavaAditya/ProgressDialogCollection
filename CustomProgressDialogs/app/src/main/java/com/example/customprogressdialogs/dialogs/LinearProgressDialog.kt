@@ -45,10 +45,7 @@ class LinearProgressDialog(context: Context): BaseDialog(context){
         lateinit var INSTANCE: LinearProgressDialog
 
         fun create(context: Context): LinearProgressDialog {
-            INSTANCE =
-                LinearProgressDialog(
-                    context
-                )
+            INSTANCE = LinearProgressDialog(context)
             return INSTANCE
         }
     }

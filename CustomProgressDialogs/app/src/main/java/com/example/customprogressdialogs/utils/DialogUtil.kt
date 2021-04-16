@@ -15,8 +15,7 @@ class DialogUtil(val context: Context) {
 
 
     lateinit var mDialog: BaseDialog
-    var dialogFactory: DialogFactory =
-        DialogFactory()
+    var dialogFactory: DialogFactory = DialogFactory()
 
     companion object {
 
@@ -27,8 +26,7 @@ class DialogUtil(val context: Context) {
          * method to create Dialog object
          */
         fun builder(context: Context): DialogUtil {
-            INSTANCE =
-                DialogUtil(context)
+            INSTANCE = DialogUtil(context)
             return INSTANCE
         }
     }
