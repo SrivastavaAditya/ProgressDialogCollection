@@ -10,9 +10,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var dialog = DialogUtil.builder(this@MainActivity)
-            .getLinearDialog()
-            .setLinearDialogTitle("Aditya Srivastava")
+            .getDialog(DialogType.LINEAR)
+            .setText(resources.getString(R.string.text_loading_please_Wait))
+            .setProgress(1000)
+            .setDuration(10000)
+            .setInterval(25)
             .build()
+
+        dialog.show()
 
     }
 }

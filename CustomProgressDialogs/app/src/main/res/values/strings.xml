@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CustomProgressDialogs</string>
     <string name="text_loading">Loading ...</string>
+    <string name="text_loading_please_Wait">Loading please wait ...</string>
 </resources>

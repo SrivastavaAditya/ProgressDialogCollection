@@ -1,17 +1,20 @@
 package com.example.customprogressdialogs
 
-import android.annotation.SuppressLint
 import android.content.Context
 
+
+/*
+ *  Dialog Builder class
+ *  ... builds all dialogs
+ */
 class DialogUtil(val context: Context) {
 
 
-    lateinit var defaultDialog: DefaultDialog
-    lateinit var linearDialog: LinearProgressDialog
+    lateinit var mDialog: BaseDialog
+    var dialogFactory: DialogFactory = DialogFactory()
 
     companion object {
 
-        @SuppressLint("StaticFieldLeak")
         lateinit var INSTANCE: DialogUtil
 
         /*
@@ -25,26 +28,96 @@ class DialogUtil(val context: Context) {
     }
 
 
-    fun getDefaultDialog(): DialogUtil{
-        defaultDialog = DefaultDialog.create(context)
+    /*
+     *
+     * method to get dialog type
+     */
+    fun getDialog(type: DialogType): DialogUtil{
+        when(type){
+            DialogType.DEFAULT -> {
+                mDialog = dialogFactory.getDefaultDialog(context)
+            }
+
+            DialogType.LINEAR -> {
+                mDialog = dialogFactory.getLinearDialog(context)
+            }
+        }
         return INSTANCE
     }
 
 
-    fun getLinearDialog(): DialogUtil{
-        linearDialog = LinearProgressDialog.create(context)
+    /*
+     *
+     * method to set text in dialog
+     */
+    fun setText(text: String): DialogUtil{
+        when(mDialog.getDialogType()){
+            DialogType.DEFAULT -> {
+                (mDialog as DefaultDialog).setText(text)
+            }
+
+            DialogType.LINEAR -> {
+                (mDialog as LinearProgressDialog).setText(text)
+            }
+
+            else -> {
+
+            }
+        }
         return INSTANCE
     }
 
 
-    fun setDefaultDialogText(text: String): DialogUtil{
-        defaultDialog.setText(text)
+    /*
+     *
+     * method to set Max Duration
+     */
+    fun setDuration(duration: Long): DialogUtil{
+        when(mDialog.getDialogType()){
+            DialogType.LINEAR -> {
+                (mDialog as LinearProgressDialog).setMaxDuration(duration)
+            }
+
+            else -> {
+
+            }
+        }
         return INSTANCE
     }
 
 
-    fun setLinearDialogTitle(text: String): DialogUtil{
-        linearDialog.setText(text)
+    /*
+     *
+     * method to set interval Duration
+     */
+    fun setInterval(interval: Long): DialogUtil{
+        when(mDialog.getDialogType()){
+            DialogType.LINEAR -> {
+                (mDialog as LinearProgressDialog).setInterval(interval)
+            }
+
+            else -> {
+
+            }
+        }
+        return INSTANCE
+    }
+
+
+    /*
+     *
+     * method to set interval Duration
+     */
+    fun setProgress(progress: Int): DialogUtil{
+        when(mDialog.getDialogType()){
+            DialogType.LINEAR -> {
+                (mDialog as LinearProgressDialog).setMaxProgress(progress)
+            }
+
+            else -> {
+
+            }
+        }
         return INSTANCE
     }
 
@@ -54,12 +127,8 @@ class DialogUtil(val context: Context) {
      * method to show dialog
      */
     fun show() {
-        if(this::defaultDialog.isInitialized){
-            defaultDialog.show()
-        }
-
-        if(this::linearDialog.isInitialized){
-            linearDialog.show()
+        if(this::mDialog.isInitialized){
+            mDialog.show()
         }
     }
 
@@ -69,13 +138,17 @@ class DialogUtil(val context: Context) {
      * method to dismiss dialog
      */
     fun dismiss() {
-        defaultDialog.dismiss()
-        linearDialog.dismiss()
+        if(this::mDialog.isInitialized){
+            mDialog.dismiss()
+        }
     }
 
 
+    /*
+     *
+     * method to build dialog util
+     */
     fun build(): DialogUtil{
-        show()
         return INSTANCE
     }
 }

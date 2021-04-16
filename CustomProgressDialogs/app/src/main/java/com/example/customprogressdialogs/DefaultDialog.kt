@@ -3,21 +3,36 @@ package com.example.customprogressdialogs
 import android.app.Dialog
 import android.content.Context
 import android.text.TextUtils
-import android.widget.TextView
 import kotlinx.android.synthetic.main.layout_default_dialog.*
 
-class DefaultDialog(mContext: Context): Dialog(mContext) {
+/*
+ *
+ *  Default dialog implementation
+ */
+class DefaultDialog(mContext: Context): BaseDialog(mContext) {
 
     var dialog = Dialog(mContext)
 
+
+    /*
+     *
+     * Initialization
+     */
     init {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.setContentView(R.layout.layout_default_dialog)
+        setDialogType(dialogType)
     }
 
 
+    /*
+     *
+     * static block
+     */
     companion object{
         const val TAG = "Default Dialog"
+
+        val dialogType = DialogType.DEFAULT
 
         lateinit var INSTANCE: DefaultDialog
 
@@ -36,6 +51,7 @@ class DefaultDialog(mContext: Context): Dialog(mContext) {
         dialog.tv_load_text.text = if (!TextUtils.isEmpty(text)) text else context.getString(R.string.text_loading)
         return INSTANCE
     }
+
 
     /*
      *
