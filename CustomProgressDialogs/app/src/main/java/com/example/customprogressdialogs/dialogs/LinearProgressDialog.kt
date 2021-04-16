@@ -1,9 +1,11 @@
-package com.example.customprogressdialogs
+package com.example.customprogressdialogs.dialogs
 
 import android.app.Dialog
 import android.content.Context
 import android.os.CountDownTimer
 import android.text.TextUtils
+import com.example.customprogressdialogs.utils.DialogType
+import com.example.customprogressdialogs.R
 import kotlinx.android.synthetic.main.layout_default_dialog.tv_load_text
 import kotlinx.android.synthetic.main.layout_linear_progress_dialog.*
 
@@ -42,8 +44,11 @@ class LinearProgressDialog(context: Context): BaseDialog(context){
 
         lateinit var INSTANCE: LinearProgressDialog
 
-        fun create(context: Context): LinearProgressDialog{
-            INSTANCE = LinearProgressDialog(context)
+        fun create(context: Context): LinearProgressDialog {
+            INSTANCE =
+                LinearProgressDialog(
+                    context
+                )
             return INSTANCE
         }
     }
@@ -53,8 +58,10 @@ class LinearProgressDialog(context: Context): BaseDialog(context){
      *
      * method to set Text
      */
-    fun setText(text: String): LinearProgressDialog{
-        dialog.tv_load_text.text = if (!TextUtils.isEmpty(text)) text else context.getString(R.string.text_loading)
+    fun setText(text: String): LinearProgressDialog {
+        dialog.tv_load_text.text = if (!TextUtils.isEmpty(text)) text else context.getString(
+            R.string.text_loading
+        )
         return INSTANCE
     }
 

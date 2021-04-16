@@ -1,6 +1,8 @@
-package com.example.customprogressdialogs
+package com.example.customprogressdialogs.factory
 
 import android.content.Context
+import com.example.customprogressdialogs.dialogs.DefaultDialog
+import com.example.customprogressdialogs.dialogs.LinearProgressDialog
 
 /*
  *  Dialog Factory class
@@ -13,7 +15,7 @@ class DialogFactory {
      *
      * method to get default dialog
      */
-    public fun getDefaultDialog(context: Context): DefaultDialog{
+    public fun getDefaultDialog(context: Context): DefaultDialog {
         return DefaultDialog.create(context)
     }
 
@@ -22,7 +24,7 @@ class DialogFactory {
      *
      * method to get linear progress dialog
      */
-    fun getLinearDialog(context: Context): LinearProgressDialog{
+    fun getLinearDialog(context: Context): LinearProgressDialog {
         return LinearProgressDialog.create(context)
     }
 }

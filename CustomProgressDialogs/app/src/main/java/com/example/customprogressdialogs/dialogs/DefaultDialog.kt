@@ -1,8 +1,10 @@
-package com.example.customprogressdialogs
+package com.example.customprogressdialogs.dialogs
 
 import android.app.Dialog
 import android.content.Context
 import android.text.TextUtils
+import com.example.customprogressdialogs.utils.DialogType
+import com.example.customprogressdialogs.R
 import kotlinx.android.synthetic.main.layout_default_dialog.*
 
 /*
@@ -36,8 +38,9 @@ class DefaultDialog(mContext: Context): BaseDialog(mContext) {
 
         lateinit var INSTANCE: DefaultDialog
 
-        fun create(context: Context): DefaultDialog{
-            INSTANCE = DefaultDialog(context)
+        fun create(context: Context): DefaultDialog {
+            INSTANCE =
+                DefaultDialog(context)
             return INSTANCE
         }
     }
@@ -47,8 +50,10 @@ class DefaultDialog(mContext: Context): BaseDialog(mContext) {
      *
      * method to set Text
      */
-    fun setText(text: String): DefaultDialog{
-        dialog.tv_load_text.text = if (!TextUtils.isEmpty(text)) text else context.getString(R.string.text_loading)
+    fun setText(text: String): DefaultDialog {
+        dialog.tv_load_text.text = if (!TextUtils.isEmpty(text)) text else context.getString(
+            R.string.text_loading
+        )
         return INSTANCE
     }
 

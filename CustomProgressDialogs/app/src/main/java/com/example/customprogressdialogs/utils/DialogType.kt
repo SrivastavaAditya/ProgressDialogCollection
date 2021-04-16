@@ -1,4 +1,4 @@
-package com.example.customprogressdialogs
+package com.example.customprogressdialogs.utils
 
 
 /*

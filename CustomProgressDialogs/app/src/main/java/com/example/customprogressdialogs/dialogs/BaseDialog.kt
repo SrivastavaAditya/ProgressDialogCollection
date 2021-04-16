@@ -1,7 +1,8 @@
-package com.example.customprogressdialogs
+package com.example.customprogressdialogs.dialogs
 
 import android.app.Dialog
 import android.content.Context
+import com.example.customprogressdialogs.utils.DialogType
 
 
 /*

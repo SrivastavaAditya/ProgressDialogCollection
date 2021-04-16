@@ -1,6 +1,10 @@
-package com.example.customprogressdialogs
+package com.example.customprogressdialogs.utils
 
 import android.content.Context
+import com.example.customprogressdialogs.dialogs.BaseDialog
+import com.example.customprogressdialogs.dialogs.DefaultDialog
+import com.example.customprogressdialogs.dialogs.LinearProgressDialog
+import com.example.customprogressdialogs.factory.DialogFactory
 
 
 /*
@@ -11,7 +15,8 @@ class DialogUtil(val context: Context) {
 
 
     lateinit var mDialog: BaseDialog
-    var dialogFactory: DialogFactory = DialogFactory()
+    var dialogFactory: DialogFactory =
+        DialogFactory()
 
     companion object {
 
@@ -21,8 +26,9 @@ class DialogUtil(val context: Context) {
          *
          * method to create Dialog object
          */
-        fun builder(context: Context): DialogUtil{
-            INSTANCE = DialogUtil(context)
+        fun builder(context: Context): DialogUtil {
+            INSTANCE =
+                DialogUtil(context)
             return INSTANCE
         }
     }
@@ -32,7 +38,7 @@ class DialogUtil(val context: Context) {
      *
      * method to get dialog type
      */
-    fun getDialog(type: DialogType): DialogUtil{
+    fun getDialog(type: DialogType): DialogUtil {
         when(type){
             DialogType.DEFAULT -> {
                 mDialog = dialogFactory.getDefaultDialog(context)
@@ -50,7 +56,7 @@ class DialogUtil(val context: Context) {
      *
      * method to set text in dialog
      */
-    fun setText(text: String): DialogUtil{
+    fun setText(text: String): DialogUtil {
         when(mDialog.getDialogType()){
             DialogType.DEFAULT -> {
                 (mDialog as DefaultDialog).setText(text)
@@ -72,7 +78,7 @@ class DialogUtil(val context: Context) {
      *
      * method to set Max Duration
      */
-    fun setDuration(duration: Long): DialogUtil{
+    fun setDuration(duration: Long): DialogUtil {
         when(mDialog.getDialogType()){
             DialogType.LINEAR -> {
                 (mDialog as LinearProgressDialog).setMaxDuration(duration)
@@ -90,7 +96,7 @@ class DialogUtil(val context: Context) {
      *
      * method to set interval Duration
      */
-    fun setInterval(interval: Long): DialogUtil{
+    fun setInterval(interval: Long): DialogUtil {
         when(mDialog.getDialogType()){
             DialogType.LINEAR -> {
                 (mDialog as LinearProgressDialog).setInterval(interval)
@@ -108,7 +114,7 @@ class DialogUtil(val context: Context) {
      *
      * method to set interval Duration
      */
-    fun setProgress(progress: Int): DialogUtil{
+    fun setProgress(progress: Int): DialogUtil {
         when(mDialog.getDialogType()){
             DialogType.LINEAR -> {
                 (mDialog as LinearProgressDialog).setMaxProgress(progress)
@@ -148,7 +154,7 @@ class DialogUtil(val context: Context) {
      *
      * method to build dialog util
      */
-    fun build(): DialogUtil{
+    fun build(): DialogUtil {
         return INSTANCE
     }
 }
